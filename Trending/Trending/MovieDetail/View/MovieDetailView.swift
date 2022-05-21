@@ -41,45 +41,63 @@ struct MovieDetailView: View {
                     Text(tagline)
                         .font(.headline)
                 }
+                
+                if let runtime = viewModel.detail?.runtime {
+                    Text(String(runtime) + " minutes")
+                }
 
                 if let overview = viewModel.detail?.overview {
                     Text(overview)
                         .font(.body)
                         .padding(5)
-                        .background(.gray)
+                        .background(Color.ColorPrimary)
                 }
-
+                
                 if let releaseDate = viewModel.detail?.releaseDate{
                     Text("Release date: " + releaseDate)
                         .font(.body)
                 }
-
-                if let imdb = viewModel.detail?.imdbId{
-                    Link("IMDB", destination: URL(string: "https://www.imdb.com/title/" + imdb)!)
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
+                
+                if let budget = viewModel.detail?.budget, let revenue = viewModel.detail?.revenue {
+                    Text("Budget: $" + String(budget))
+                    Text("Revenue: $" + String(revenue))
+                    
+                    let profit = revenue - budget
+                    if profit > 0 {
+                        Text("Profit: $" + String(profit))
+                            .foregroundColor(.green)
+                    } else if profit == 0 {
+                        Text("Profit: $" + String(profit))
+                            .foregroundColor(.yellow)
+                    } else {
+                        Text("Profit: $" + String(profit))
+                            .foregroundColor(.red)
+                    }
                 }
-//
-//                if let genres = viewModel.detail?.genres{
-//                    List(genres) { gen in
-//                        Text("gen.name")
+                
+                if let id = viewModel.detail?.movieId {
+                    NavigationLink(destination: MovieSimilarView(id: id)) {
+                        Text("Click here for similar movies")
+                            .padding(20)
+                    }
+                }
+                
+                HStack {
+                    if let imdb = viewModel.detail?.imdbId{
+                        Link("IMDB", destination: URL(string: "https://www.imdb.com/title/" + imdb)!)
+                            .font(.largeTitle)
+                            .padding(20)
+                    }
+                    
+//                    if let homepage = viewModel.detail?.homepage{
+//                        Link("Homepage", destination: URL(string: homepage)!)
+//                            .font(.largeTitle)
+//                            .padding(20)
 //                    }
-//                }
+                }
                 
-//                runtime
-//                revenue vs budget
-//                popularity
-//                homepage
-                
-                
-//                Spacer()
+                Spacer()
             }
-        }
+        }.background(Color.BackgroundColorList)
     }
 }
-
-//struct DetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DetailView(detail: <#T##Detail#>)
-//    }
-//}

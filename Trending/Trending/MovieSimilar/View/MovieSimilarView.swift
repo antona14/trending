@@ -1,15 +1,22 @@
 //
-//  ListView.swift
+//  SimilarView.swift
 //  Trending
 //
-//  Created by Anton on 08/02/2022.
+//  Created by Anton on 28/02/2022.
 //
 
 import SwiftUI
 
-struct MovieView: View {
+struct MovieSimilarView: View {
     
-    @ObservedObject var viewModel = MovieViewModel()
+    @ObservedObject var viewModel: MovieSimilarViewModel
+
+    var id: Int
+    
+    init(id: Int) {
+        self.id = id
+        self.viewModel = MovieSimilarViewModel(id: id)
+    }
 
     var body: some View {
         List(viewModel.movies) { movie in
@@ -34,10 +41,6 @@ struct MovieView: View {
                 }
             }
         }
-        .refreshable{
-            viewModel.getMovies()
-        }
         .navigationBarTitle("Trending movies")
-        
     }
 }

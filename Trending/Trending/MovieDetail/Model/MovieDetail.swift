@@ -12,7 +12,7 @@ struct MovieDetail: Codable, Identifiable {
     let movieId: Int
     let budget: Int
     let revenue: Int
-    let homepage: String
+    let homepage: String?
     let originalTitle: String
     let title: String
     let poster: String
@@ -21,6 +21,8 @@ struct MovieDetail: Codable, Identifiable {
     let backdrop: String
     let imdbId: String
     let tagline: String
+    let runtime: Int
+    let popularity: Double
 
     enum CodingKeys: String, CodingKey {
         case movieId = "id"
@@ -35,5 +37,7 @@ struct MovieDetail: Codable, Identifiable {
         case backdrop = "backdrop_path"
         case imdbId = "imdb_id"
         case tagline
+        case runtime
+        case popularity
     }
 }

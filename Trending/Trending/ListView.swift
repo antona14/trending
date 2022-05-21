@@ -2,14 +2,14 @@
 //  ListView.swift
 //  Trending
 //
-//  Created by Anton on 08/02/2022.
+//  Created by Anton on 01/03/2022.
 //
 
 import SwiftUI
 
-struct MovieView: View {
+struct ListView: View {
     
-    @ObservedObject var viewModel = MovieViewModel()
+    @ObservedObject var viewModel = ListViewModel()
 
     var body: some View {
         List(viewModel.movies) { movie in

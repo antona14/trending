@@ -1,16 +1,23 @@
 //
-//  TvView.swift
+//  TvSimilar.swift
 //  Trending
 //
-//  Created by Anton on 25/02/2022.
+//  Created by Anton on 28/02/2022.
 //
 
 import SwiftUI
 
-struct TvView: View {
+struct TvSimilarView: View {
     
-    @ObservedObject var viewModel = TvViewModel()
+    @ObservedObject var viewModel: TvSimilarViewModel
+
+    var id: Int
     
+    init(id: Int) {
+        self.id = id
+        self.viewModel = TvSimilarViewModel(id: id)
+    }
+
     var body: some View {
         List(viewModel.tvshows) { tvshow in
             NavigationLink(destination: TvDetailView(id: tvshow.tvId)) {
@@ -34,7 +41,6 @@ struct TvView: View {
                 }
             }
         }
-        .refreshable{ viewModel.getTvShows() }
         .navigationBarTitle("Trending TV Shows")
     }
 }

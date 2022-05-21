@@ -1,29 +1,31 @@
 //
-//  TvViewModel.swift
+//  TvSimilarViewModel.swift
 //  Trending
 //
-//  Created by Anton on 25/02/2022.
+//  Created by Anton on 28/02/2022.
 //
 
 import Foundation
 import Combine
 
-class TvViewModel: ObservableObject {
+class TvSimilarViewModel: ObservableObject {
     
     @Published var tvshows: [TvShow] = []
     
     var cancellationToken: AnyCancellable?
     
-    init() {
-        getTvShows()
+    let id: Int
+    
+    init(id: Int) {
+        self.id = id
+        getSimilarTv(id: id)
     }
 }
 
-extension TvViewModel {
+extension TvSimilarViewModel {
     
-    // Subscriber
-    func getTvShows() {
-        cancellationToken = TvDB.request(path: "trending/tv/week")
+    func getSimilarTv(id: Int) {
+        cancellationToken = TvSimilarDB.request(path: "tv/\(id)/similar")
             .mapError({ (error) -> Error in
                 print(error)
                 return error

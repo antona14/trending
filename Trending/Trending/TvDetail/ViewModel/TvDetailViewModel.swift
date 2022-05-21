@@ -27,7 +27,6 @@ extension TvDetailViewModel {
     // Subscriber
     func getTvDetails(id: Int) {
         cancellationToken = TvDetailDB.request(path: "tv/\(id)")
-//        cancellationToken = TvDetailDB.request(path: "tv/76331")
             .mapError({ (error) -> Error in
                 print(error)
                 return error
@@ -35,7 +34,6 @@ extension TvDetailViewModel {
             .sink(receiveCompletion: { _ in },
                   receiveValue: { detail in
                 self.detail = detail
-                print("Received: \(detail)")
             })
     }
 }

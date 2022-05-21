@@ -50,30 +50,28 @@ struct TvDetailView: View {
                     Text(overview)
                         .font(.body)
                         .padding(5)
-                        .background(.gray)
+                        .background(Color.ColorPrimary)
+                }
+                
+                if let id = viewModel.detail?.tvId {
+                    NavigationLink(destination: TvSimilarView(id: id)) {
+                        Text("Click here for similar tv shows")
+                            .padding(20)
+                    }
                 }
 
-//                if let releaseDate = viewModel.detail?.releaseDate{
-//                    Text("Release date: " + releaseDate)
-//                        .font(.body)
+                if let lastAirDate = viewModel.detail?.lastAirDate{
+                    Text("Last episode air date: " + lastAirDate)
+                        .font(.body)
+                }
+
+//                if let homepa = viewModel.detail?.homepage{
+//                    Link("Homepage", destination: URL(string: homepa)!)
+//                        .font(.largeTitle)
+//                        .foregroundColor(.red)
 //                }
-
-                if let homepa = viewModel.detail?.homepage{
-                    Link("Homepage", destination: URL(string: homepa)!)
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
-                }
-
-                
-//                runtime
-//                revenue vs budget
-//                popularity
-//                homepage
-                
-                
-//                Spacer()
             }
-        }
+        }.background(Color.BackgroundColorList)
     }
     
 }

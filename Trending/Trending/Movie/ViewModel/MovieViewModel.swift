@@ -21,7 +21,7 @@ class MovieViewModel: ObservableObject {
 
 extension MovieViewModel {
     
-    // Subscriber implementation
+    // Subscriber
     func getMovies() {
         cancellationToken = MovieDB.request(path: "trending/movie/week")
             .mapError({ (error) -> Error in

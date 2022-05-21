@@ -16,7 +16,7 @@ struct Movie: Codable, Identifiable {
     let poster: String
     let overview: String
     let releaseDate: String
-    let backdrop: String
+    let backdrop: String?
     let voteAverage: Double
     let voteCount: Int
     let popularity: Double
@@ -41,6 +41,15 @@ struct AllMovies: Codable {
 
     enum CodingKeys: String, CodingKey {
         
+        // This is an array with all the movies
+        case movies = "results"
+    }
+}
+
+struct AllSimilarMovies: Codable {
+    let movies: [Movie]
+    
+    enum CodingKeys: String, CodingKey {
         // This is an array with all the movies
         case movies = "results"
     }

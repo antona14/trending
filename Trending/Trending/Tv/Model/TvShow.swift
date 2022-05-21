@@ -41,3 +41,11 @@ struct AllTvShows: Codable {
         case tvshows = "results"
     }
 }
+
+struct allSimilarTv: Codable {
+    let tvshows: [TvShow]
+
+    enum CodingKeys: String, CodingKey {
+        case tvshows = "results"
+    }
+}

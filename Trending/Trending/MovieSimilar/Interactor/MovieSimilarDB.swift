@@ -1,22 +1,22 @@
 //
-//  MovieDBAPI.swift.swift
+//  MovieSimilarDB.swift
 //  Trending
 //
-//  Created by Anton on 08/02/2022.
+//  Created by Anton on 28/02/2022.
 //
 
 import Foundation
 import Combine
 
-enum MovieDB {
+class MovieSimilarDB {
     static let apiClient = APIClient()
     static let baseUrl = URL(string: "https://api.themoviedb.org/3/")!
 }
 
-extension MovieDB {
+extension MovieSimilarDB {
     
-    static func request(path: String) -> AnyPublisher<AllMovies, Error> {
-
+    static func request(path: String) -> AnyPublisher<AllSimilarMovies, Error> {
+        
         guard var components = URLComponents(url: baseUrl.appendingPathComponent(path), resolvingAgainstBaseURL: true)
             else { fatalError("Couldn't create URLComponents") }
         components.queryItems = [URLQueryItem(name: "api_key", value: "173299f7414048733419c33f8ede6645")]
