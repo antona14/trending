@@ -4,4 +4,6 @@ It's an iOS app where you can see movies and tv shows trending in current week. 
 
 Using Swift and SwiftUI.
 
+To run this you simply open the the **Trending.xcodeproj** file in Xcode (I used version 13.3.1) and run in a simulator.
+
 Thank you Zamzam for being helpful and patience.
